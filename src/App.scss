@@ -1,0 +1,50 @@
+$primary-color: #2c7be5;
+$bg-gray: #efefef;
+$border-gray: #dee2e6;
+
+
+.bg-shop {
+  background-color: $primary-color !important;
+}
+
+.bg-gray {
+  background-color: $bg-gray;
+}
+
+.border-gray {
+  border: 1px solid $border-gray;
+}
+
+.border-bottom-gray {
+  border-bottom: 1px solid $border-gray;
+}
+
+.active-text {
+  color: $primary-color !important;
+}
+
+a:hover {
+  color: $primary-color !important;
+}
+
+.nav-link{
+  &.product-link {
+    &:hover{
+      color: unset !important;
+    }
+  }
+  &.active, &:hover {
+    color: $primary-color !important;
+    cursor: pointer;
+  }
+}
+
+.btn-checkout:hover, .btn-buy:hover {
+  color: white !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+

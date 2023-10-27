@@ -1,0 +1,17 @@
+.nav-bar {
+  .category-item {
+    padding: 10px 20px;
+  }
+
+  .dropdown-toggle::after {
+    display:none;
+  }
+
+  .dropdown-item {
+    &:hover {
+      cursor: pointer !important;
+      color: #2c7be5 !important;
+      background-color: transparent !important;
+    }
+  }
+}
