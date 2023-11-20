@@ -1,0 +1,28 @@
+.product-item {
+  .product-img {
+    img {
+      aspect-ratio: 1/1;
+    }
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: unset;
+
+    &:hover {
+      .product-name {
+        color: #0a53be;
+      }
+    }
+  }
+
+  .icon-cash {
+    color: #03B444FF;
+  }
+
+  .product-detail {
+    &:hover {
+      color: #0a53be !important;
+    }
+  }
+}

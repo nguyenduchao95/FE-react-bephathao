@@ -1,3 +1,14 @@
+.contact-custom {
+  .contact-phone, .contact-email {
+    text-decoration: none;
+    color: unset;
+
+    &:hover {
+      color: #0a53be;
+    }
+  }
+}
+
 .contact {
   position: fixed;
   z-index: 100;

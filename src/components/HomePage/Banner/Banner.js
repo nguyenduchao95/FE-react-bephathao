@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {getAllBanners} from "../../../service/bannerService";
 import {Spinner} from "react-bootstrap";
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation, Autoplay} from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import _ from "lodash";
 
 const Banner = () => {
     const [banners, setBanners] = useState([]);
@@ -19,25 +26,20 @@ const Banner = () => {
             {isLoading ?
                 <Spinner animation="border" variant="primary"/>
                 :
-                <div id="carouselSlider" className="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        {banners && banners.map((banner, index) => (
-                            <div className={`carousel-item ${!index ? 'active' : ''}`} key={banner.id} data-bs-interval="3000">
-                                <img className='img-slider img-fluid' src={banner.image} alt="..."/>
-                            </div>
+                <>
+                    <Swiper navigation={true} modules={[Navigation, Autoplay]}
+                            autoplay={{
+                                delay: 3000,
+                                disableOnInteraction: false,
+                            }}>
+                        {!_.isEmpty(banners) && banners.map(banner => (
+                            <SwiperSlide key={banner.id}>
+                                <img className='img-slider img-fluid' src={banner.image} alt="..."
+                                     style={{aspectRatio: '16/9'}} width={900}/>
+                            </SwiperSlide>
                         ))}
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselSlider"
-                            data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselSlider"
-                            data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
-                </div>
+                    </Swiper>
+                </>
             }
         </div>
     );

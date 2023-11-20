@@ -1,0 +1,27 @@
+.banners-manager {
+  .icon-delete {
+    right: 15px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #696969;
+    color: white;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 0 4px 0 black;
+    font-size: 14px;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+}
+
+.banner-modal {
+  .modal-content {
+    background: transparent;
+    border: none;
+  }
+}

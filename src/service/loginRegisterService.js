@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL_API = 'http://localhost:8080/api/login-register';
+const URL_API = `http://54.254.46.3:8080/api/login-register`;
 const checkUsername = (account) => {
     return axios.post(`${URL_API}/check-username`, account);
 }

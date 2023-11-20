@@ -9,14 +9,15 @@ const Slogan = () => {
                 <TypeAnimation
                     sequence={[
                         'Bếp Hà Thảo',
-                        1000,
+                        1500,
                         'Thiết bị nhà bếp cao cấp',
-                        1000
+                        1500
                     ]}
                     wrapper="span"
                     speed={50}
                     deletionSpeed={30}
-                    style={{fontSize: '2em', fontWeight: 'bold', display: 'inline-block', color: 'red'}}
+                    className="fs-1"
+                    style={{fontWeight: 'bold', display: 'inline-block', color: 'red', textAlign: 'center'}}
                     repeat={Infinity}
                 />
             </div>

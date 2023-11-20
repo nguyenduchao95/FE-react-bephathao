@@ -38,7 +38,7 @@ const CartPage = () => {
                 <div className="row px-xl-5 mt-5">
                     <div className="col-lg-8 table-responsive mb-5">
                         <table className="table table-bordered text-center mb-0">
-                            <thead className="bg-secondary text-dark py-3">
+                            <thead className="bg-secondary text-dark py-3 align-middle">
                             <tr>
                                 <th style={{padding: '12px 4px'}}>STT</th>
                                 <th style={{padding: '12px'}}>Sản phẩm</th>
@@ -54,9 +54,9 @@ const CartPage = () => {
                                     return (
                                         <tr key={cart.product.id}>
                                             <td className="align-middle">{index + 1}</td>
-                                            <td className="align-middle">
+                                            <td className="text-start">
                                                 <img src={cart.product?.avatar} alt="" style={{width: '50px'}}
-                                                     className="me-2"/>
+                                                     className="me-2 d-none d-md-inline"/>
                                                 {cart.product?.name}
                                             </td>
                                             <td className="align-middle">

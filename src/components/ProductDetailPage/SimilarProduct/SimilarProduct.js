@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {getAllProductsByCategory} from "../../../service/productService";
 import _ from 'lodash';
-import Card from "../../HomePage/Products/Card";
+import Card from "../../HomePage/Products/Card/Card";
 import {ProductDetailContext} from "../ProductDetailPage";
 
 const SimilarProduct = () => {

@@ -13,7 +13,7 @@ const ImageItemEdit = ({setImageURLEdit, index, url, imagesFile, values, setImag
         });
     }
     return (
-        <div className="position-relative d-inline-block image-thumbnail">
+        <div className="position-relative d-inline-block image-thumbnail me-2">
             <img src={url} className="img-thumbnail" alt=""
                  width={250} style={{height: '250px'}} loading="lazy"/>
             <span className="position-absolute top-0 p-2 fs-5 btn-delete"

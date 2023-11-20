@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import uploadFileWithProgress from "../../../../firebase/uploadFileWithProgress";
-import CircularProgressWithLabel from "../../AccountInfomation/Avatar/CircularProgressWithLabel";
+import CircularProgressWithLabel from "../../AccountInformation/Avatar/CircularProgressWithLabel";
 
-const ImageItem = ({file, setImagesFile, setImagesURL, imagesFile, values, houseId}) => {
+const ImageItem = ({file, setImagesFile, setImagesURL, imagesFile, values, productId}) => {
     const [imagePreview, setImagePreview] = useState("");
     const [progress, setProgress] = useState(0);
 
@@ -13,7 +13,7 @@ const ImageItem = ({file, setImagesFile, setImagesURL, imagesFile, values, house
             const imageUrl = await uploadFileWithProgress(file, setProgress);
             const imgObject = {
                 url: imageUrl,
-                house: {id: houseId}
+                product: {id: productId}
             }
             setImagesURL(pre => [...pre, imgObject]);
         }
@@ -37,7 +37,7 @@ const ImageItem = ({file, setImagesFile, setImagesURL, imagesFile, values, house
     }
 
     return (
-        <div className={`position-relative d-inline-block image-thumbnail ${imagePreview ? '' : 'd-none'}`}>
+        <div className={`position-relative d-inline-block image-thumbnail me-2 ${imagePreview ? '' : 'd-none'}`}>
             <img src={imagePreview} className={`img-thumbnail ${progress < 100 ? 'brightness-50' : ''}`} alt=""
                  width={250} style={{height: '250px'}} loading="lazy"/>
             {progress >= 100 &&

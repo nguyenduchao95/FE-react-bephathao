@@ -33,7 +33,7 @@ const ProductDetailPage = () => {
             top: 0,
             behavior: "smooth"
         })
-    }, [])
+    }, [productId])
     return (
         <ProductDetailContext.Provider value={{product, countReviews}}>
             <Slogan/>

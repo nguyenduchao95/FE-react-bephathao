@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './products.scss';
 import {getAllCategories} from "../../../service/categoryService";
-import ProductByCategory from "./ProductByCategory";
+import ProductByCategory from "./ProductByCategory/ProductByCategory";
 import {Spinner} from "react-bootstrap";
 
 const Products = () => {
@@ -25,7 +25,7 @@ const Products = () => {
     )
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid container-products">
             {categories && categories.map(category => (
                 <ProductByCategory key={category.id} category={category}/>
             ))}

@@ -10,7 +10,7 @@ const TinyMce = ({editorRef, handleSaveTinyMCE, handleClose, isDescription, desc
                 onInit={(event, editor) => editorRef.current = editor}
                 initialValue={isDescription ? description : technicalInformation}
                 init={{
-                    height: 500,
+                    height: '85vh',
                     menubar: true,
                     plugins: [
                         'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'anchor',

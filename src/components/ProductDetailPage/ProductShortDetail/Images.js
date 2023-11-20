@@ -19,7 +19,8 @@ const Images = () => {
     useEffect(() => {
         if (product.id) {
             getAllImagesByProductId(product.id).then(response => {
-                setImages(response.data);
+                const avatar = {id: response.data.length + 1, url: product.avatar};
+                setImages([avatar, ...response.data]);
             }).catch(error => {
                 console.log(error);
             })

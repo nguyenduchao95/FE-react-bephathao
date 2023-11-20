@@ -23,16 +23,7 @@ $border-gray: #dee2e6;
   color: $primary-color !important;
 }
 
-a:hover {
-  color: $primary-color !important;
-}
-
-.nav-link{
-  &.product-link {
-    &:hover{
-      color: unset !important;
-    }
-  }
+.nav-link {
   &.active, &:hover {
     color: $primary-color !important;
     cursor: pointer;
@@ -45,6 +36,28 @@ a:hover {
 
 .pointer {
   cursor: pointer;
+}
+
+.table-custom {
+  thead {
+    vertical-align: middle;
+    tr {
+      font-size: 18px;
+      th:not(:first-child){
+        min-width: 120px;
+      }
+      th:last-child{
+        min-width: 150px;
+      }
+    }
+  }
+  tbody {
+    vertical-align: middle;
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 

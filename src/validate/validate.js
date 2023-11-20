@@ -132,7 +132,6 @@ const changeAccountPasswordSchema = Yup.object({
 
 const productSchema = Yup.object().shape({
     name: Yup.string()
-        .min(2, 'Tên tối thiểu phải 2 kí tự')
         .required('Vui lòng không được để trống'),
     category: Yup.string()
         .required('Vui lòng không được để trống'),
@@ -144,6 +143,9 @@ const productSchema = Yup.object().shape({
         .required('Vui lòng không được để trống'),
     price: Yup.number()
         .min(1, 'Giá tiền phải lớn hơn 0')
+        .required('Vui lòng không được để trống'),
+    quantity: Yup.number()
+        .min(1, 'Số lượng phải lớn hơn 0')
         .required('Vui lòng không được để trống'),
     sale: Yup.number()
         .min(0, 'Giảm giá phải lớn hơn hoặc bằng 0')
@@ -162,5 +164,51 @@ const productSchema = Yup.object().shape({
         .required('Vui lòng không được để trống')
 })
 
+const experienceSchema = Yup.object().shape({
+    title: Yup.string()
+        .required('Vui lòng không được để trống'),
+    content: Yup.string()
+        .required('Vui lòng không được để trống'),
+    avatar: Yup.string()
+        .required('Vui lòng không được để trống')
+})
 
-export {orderSchema, loginSchema,registerSchema, editAccountInfoSchema, changeAccountPasswordSchema, productSchema};
+const policySupportSchema = Yup.object().shape({
+    title: Yup.string()
+        .required('Vui lòng không được để trống'),
+    content: Yup.string()
+        .required('Vui lòng không được để trống')
+})
+
+const editShopInfoSchema = Yup.object().shape({
+    phoneNumber: Yup.string()
+        .matches(/^(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b$/, 'Đây không phải là số điện thoại')
+        .required('Vui lòng không được để trống'),
+    email: Yup.string()
+        .required('Vui lòng không được để trống'),
+    address: Yup.string()
+        .required('Vui lòng không được để trống')
+})
+
+const reviewSchema = Yup.object().shape({
+    phoneNumber: Yup.string()
+        .matches(/^(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b$/, 'Đây không phải là số điện thoại')
+        .required('Vui lòng không được để trống'),
+    comment: Yup.string()
+        .required('Vui lòng không được để trống'),
+    username: Yup.string()
+        .required('Vui lòng không được để trống')
+})
+
+export {
+    orderSchema,
+    loginSchema,
+    registerSchema,
+    editAccountInfoSchema,
+    changeAccountPasswordSchema,
+    productSchema,
+    experienceSchema,
+    policySupportSchema,
+    editShopInfoSchema,
+    reviewSchema
+};

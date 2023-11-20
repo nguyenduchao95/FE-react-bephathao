@@ -4,7 +4,7 @@ import uploadFileWithProgress from "../../../../firebase/uploadFileWithProgress"
 import "./avatarUpload.scss";
 
 const AvatarUpload = ({file, setAvatarFile, avatarURL, setAvatarURL, values}) => {
-    const [avatarPreview, setAvatarPreview] = useState(avatarURL ? avatarURL : "");
+    const [avatarPreview, setAvatarPreview] = useState("");
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
@@ -26,6 +26,10 @@ const AvatarUpload = ({file, setAvatarFile, avatarURL, setAvatarURL, values}) =>
     useEffect(()=>{
         setProgress(100);
     }, [])
+
+    useEffect(()=>{
+        setAvatarPreview(avatarURL);
+    }, [avatarURL])
 
     const handleDeleteAvatar = () => {
         setAvatarPreview("");

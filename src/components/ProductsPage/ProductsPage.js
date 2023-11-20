@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './productsPage.scss';
-import Card from "../HomePage/Products/Card";
+import Card from "../HomePage/Products/Card/Card";
 import FilterBrand from "./FilterAndSort/FilterBrand";
 import FilterCategory from "./FilterAndSort/FilterCategory";
 import FilterPrice from "./FilterAndSort/FilterPrice";
@@ -21,7 +21,7 @@ const ProductsPage = () => {
     const [brandIds, setBrandIds] = useState([]);
     const [prices, setPrices] = useState([0, 0]);
     const [sortBy, setSortBy] = useState("default");
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     if (categoryId && categoryId !== categoryIdChange) {
         setCategoryIds([+categoryId]);
@@ -35,7 +35,8 @@ const ProductsPage = () => {
     }
 
     useEffect(() => {
-        filterProducts(categoryIds, brandIds, prices, sortBy, currentPage - 1, 12).then(response => {
+        const data = {categoryIds, brandIds, sortBy, min: prices[0], max: prices[1]};
+        filterProducts(data, currentPage - 1, 12).then(response => {
             setProducts(response.data);
             setIsLoading(false);
         }).catch(error => {
@@ -58,19 +59,20 @@ const ProductsPage = () => {
 
             <div className="container-fluid pt-3">
                 <div className="row px-xl-5">
-                    <div className="col-lg-3 col-md-12">
-                        <FilterCategory categoryIds={categoryIds} setCategoryIds={setCategoryIds}/>
-                        <FilterPrice prices={prices} setPrices={setPrices}/>
-                        <FilterBrand brandIds={brandIds} setBrandIds={setBrandIds}/>
+                    <div className="col-lg-3 col-12">
+                        <FilterCategory categoryIds={categoryIds} setCategoryIds={setCategoryIds} setCurrentPage={setCurrentPage}/>
+                        <FilterPrice prices={prices} setPrices={setPrices} setCurrentPage={setCurrentPage}/>
+                        <FilterBrand brandIds={brandIds} setBrandIds={setBrandIds} setCurrentPage={setCurrentPage}/>
                     </div>
 
-                    <div className="col-lg-9 col-md-12">
+                    <div className="col-lg-9 col-12">
                         <div className="row pb-3">
                             <div className="col-12 pb-1">
-                                <SortBy sortBy={sortBy} setSortBy={setSortBy}/>
+                                <SortBy sortBy={sortBy} setSortBy={setSortBy} setCurrentPage={setCurrentPage}/>
                             </div>
 
-                            <div className="row col-12" style={{minHeight: '1200px'}}>
+                            <div className="col-12" style={{minHeight: '1200px'}}>
+                                <div className="row">
                                 {isLoading ?
                                     <div className="text-center">
                                         <Spinner animation="border" variant="primary"/>
@@ -81,7 +83,7 @@ const ProductsPage = () => {
                                         :
                                         <h5 className="mt-5 text-danger text-center">Không tìm thấy sản phẩm !</h5>
                                 }
-
+                                </div>
                             </div>
                             <div className="col-12 pb-1 d-flex justify-content-center">
                                 {products.totalPages ?

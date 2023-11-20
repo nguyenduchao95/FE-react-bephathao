@@ -1,0 +1,42 @@
+.experience-page {
+  .btn {
+    &.active {
+      border-color: red !important;
+      color: red;
+    }
+
+    &:hover {
+      border-color: red !important;
+    }
+  }
+
+  .experience-list {
+    min-height: 600px;
+
+    .custom-link {
+      display: block;
+      text-decoration: none;
+      color: unset;
+      cursor: pointer;
+
+      &:hover {
+        .title {
+          color: #0a53be;
+        }
+      }
+    }
+
+    .content {
+      overflow: hidden;
+      position: relative;
+      display: -webkit-box;
+      text-align: justify;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+
+      strong {
+        font-weight: normal;
+      }
+    }
+  }
+}

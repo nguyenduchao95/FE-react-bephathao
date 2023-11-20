@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import Swal from "sweetalert2";
 import {registerSchema} from "../../validate/validate";
 import {register} from "../../service/loginRegisterService";
+import {Tooltip} from "@mui/material";
 
 const Register = ({setShowLogin}) => {
-    const [showUsernameHelp, setShowUsernameHelp] = useState(true);
-    const [showEmailHelp, setShowEmailHelp] = useState(true);
-    const [showPasswordHelp, setShowPasswordHelp] = useState(true);
     const handleSubmit = (value) => {
         register(value)
             .then(res => {
@@ -48,49 +46,59 @@ const Register = ({setShowLogin}) => {
                                     handleSubmit(values)
                                 }}>
                                 <Form>
-                                    <div className="mb-2">
-                                        <label className="form-label" htmlFor="username">Tên đăng nhập:</label>
+                                    <div className="mb-2 position-relative">
+                                        <label className="form-label" htmlFor="username">
+                                            Tên đăng nhập <span className="text-danger">*</span>
+                                        </label>
                                         <Field type="text" id="username" name="username" placeholder="Ví dụ: user"
-                                               className="form-control py-2"
-                                               onInput={() => setShowUsernameHelp(false)}/>
+                                               className="form-control py-2"/>
+                                        <span className="position-absolute text-warning"
+                                              style={{right: '-30px', top: '38px'}}>
+                                                <Tooltip title="Tên đăng nhập không được chứa kí tự đặc biệt"
+                                                         enterTouchDelay={0} arrow>
+                                                    <i className="bi bi-info-circle fs-5"></i>
+                                                </Tooltip>
+                                        </span>
                                         <ErrorMessage name="username" className="text-danger mt-1"
                                                       component="small"/>
-                                        {showUsernameHelp &&
-                                            <small className="text-secondary d-block">
-                                                Tên đăng nhập không được chứa kí tự đặc biệt.
-                                            </small>
-                                        }
                                     </div>
 
-                                    <div className="mb-2">
-                                        <label className="form-label" htmlFor="email">Email:</label>
+                                    <div className="mb-2 position-relative">
+                                        <label className="form-label" htmlFor="email">
+                                            Email <span className="text-danger">*</span>
+                                        </label>
                                         <Field type="email" id="email" name="email" placeholder="Ví dụ: user@gmail.com"
-                                               className="form-control py-2" onInput={() => setShowEmailHelp(false)}/>
+                                               className="form-control py-2"/>
+                                        <span className="position-absolute text-warning"
+                                              style={{right: '-30px', top: '38px'}}>
+                                                <Tooltip title="Email phải đúng định dạng email"
+                                                         enterTouchDelay={0} arrow>
+                                                    <i className="bi bi-info-circle fs-5"></i>
+                                                </Tooltip>
+                                        </span>
                                         <ErrorMessage name="email" className="text-danger mt-1" component="small"/>
-                                        {showEmailHelp &&
-                                            <small className="text-secondary d-block">
-                                                Email phải đúng định dạng email.
-                                            </small>
-                                        }
                                     </div>
 
-                                    <div className="mb-2">
-                                        <label className="form-label" htmlFor="password">Mật khẩu:</label>
+                                    <div className="mb-2 position-relative">
+                                        <label className="form-label" htmlFor="password">
+                                            Mật khẩu <span className="text-danger">*</span>
+                                        </label>
                                         <Field type="password" id="password" name="password" placeholder="Ví dụ: User12"
-                                               className="form-control py-2"
-                                               onInput={() => setShowPasswordHelp(false)}/>
+                                               className="form-control py-2"/>
+                                        <span className="position-absolute text-warning"
+                                              style={{right: '-30px', top: '38px'}}>
+                                                <Tooltip title="Mật khẩu ít nhất 6 kí tự, chứa chữ cái viết hoa, viết thường và ký tự số"
+                                                         enterTouchDelay={0} arrow>
+                                                    <i className="bi bi-info-circle fs-5"></i>
+                                                </Tooltip>
+                                        </span>
                                         <ErrorMessage name="password" className="text-danger mt-1"
                                                       component="small"/>
-                                        {showPasswordHelp &&
-                                            <small className="text-secondary d-block">
-                                                Mật khẩu phải chứa chữ cái viết hoa, viết thường và ký tự số.
-                                            </small>
-                                        }
                                     </div>
 
                                     <div className="mb-2">
                                         <label className="form-label" htmlFor="confirmPassword">
-                                            Xác nhận lại mật khẩu:
+                                            Xác nhận lại mật khẩu <span className="text-danger">*</span>
                                         </label>
                                         <Field type="password" id="confirmPassword" name="confirmPassword"
                                                placeholder="Xác nhận mật khẩu"
